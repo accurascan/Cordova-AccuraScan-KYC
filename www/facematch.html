@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta name="color-scheme" content="light dark">
+        <link rel="stylesheet" href="css/facematch.css">
+        <title>Accura KYC</title>
+    </head>
+    <!-- <body style="background-image: url('img/background.png');"> -->
+    <body style="background-color: white;"> 
+        <header class="app-bar">
+            <img class="ready" src="img/back.png">
+            <h1 class="app-bar-title">Accura Kyc</h1>
+        </header>  
+        <div id="uploadFace1">
+            <p id="dummy1">Upload Face Image</p>
+            <img id="face1">
+        </div>
+        <div id="button1">
+            <button id="gallery1">Gallery</button>
+            <button id="facematch1">Camera</button>
+        </div>
+        <div id="uploadface2">
+            <p id="dummy2">Upload Face Image</p>
+            <img id="face2">
+        </div>
+        <div id="button2">
+            <button id="gallery2">Gallery</button>
+            <button id="facematch2">Camera</button>
+        </div>
+        <div id="scoreback">
+            <p id="score">Score: </p>
+        </div>
+        <script src="cordova.js"></script>
+        <script src="js/facematch.js"></script>
+    </body>
+</html>

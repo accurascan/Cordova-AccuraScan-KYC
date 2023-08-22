@@ -1,0 +1,83 @@
+body{
+    overflow-x: hidden;
+}
+
+.app {
+    width: 90%;
+    max-width: 400px; /* Adjust the maximum width as needed */
+    margin: 0 auto;
+}
+
+.app-bar {
+    position: sticky;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    position: sticky;
+    top: 0;
+    background-color: #D5323F;
+    color: #fff;
+    padding: 10px;
+    margin: 0px;
+    margin-right: -10px;
+    margin-left: -10px;
+    margin-bottom: 5px;
+}
+  
+.app-bar-title {
+    margin: 0;
+}
+
+#dummy1 {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 100px;
+    text-align: center;
+    color: black;
+    border: 2px solid black;
+}
+
+/* #face1, #face2 {
+    margin-left: auto;
+    margin-right: auto;
+} */
+
+#dummy2 {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 100px;
+    text-align: center;
+    color: black;
+    border: 2px solid black;
+}
+
+#gallery1,#gallery2,
+#facematch1,#facematch2 {
+    width: 200px;
+    height: 50px;
+    background-color: #D5323F;
+    margin-right: 20px;
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: large;
+    border-radius: 10px;
+    color: white;
+}
+
+#button1, #button2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: -20px;
+}
+
+#scoreback {
+    background-color: grey;
+    height: 30px;
+    width: 100%;
+    text-align: center;
+}
+
+#score {
+    padding: 5px;
+}

@@ -1,0 +1,83 @@
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    overflow-x: hidden;
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    /* -webkit-user-select: none;                  prevent copy paste, to allow, change 'none' to 'text' */
+    background-color:white;
+    font-family: system-ui, -apple-system, -apple-system-font, 'Segoe UI', 'Roboto', sans-serif;
+    font-size:12px;
+    height:100vh;
+    padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+    text-transform:uppercase;
+    width:98%;
+    max-width: 100%;
+}
+
+.app-bar {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    position: sticky;
+    top: 0;
+    background-color: #D5323F;
+    color: #fff;
+    padding: 15px;
+    padding-top: 20px;
+    margin: 0px;
+    margin-left: -10px;
+    margin-top: -10px;
+    margin-bottom: 5px;
+  }
+  
+.app-bar-title {
+    margin: 0;
+}
+
+#cards {
+    overflow: hidden;
+    color: black;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    width: 98%;
+
+}
+
+li {
+    padding: 15px;
+    background-color: #D5323F;
+    /* border-bottom: 5px solid #ccc; */
+    list-style-type: none;
+    border-radius: 10px;
+    margin-top: 5px;
+    /* margin-left: -5px; */
+    color: white;
+    font-weight: bold;
+  }
+
+.app {
+    align-items: center;
+    text-align: center;
+    /* background:url(../img/logo.png) no-repeat center top; 170px x 200px */
+    position:center;
+    -webkit-overflow-scrolling: touch;
+}
+
+#deviceready.ready .event.listening { display: none; }
+#deviceready.ready .event.received { display: block; }
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+}
