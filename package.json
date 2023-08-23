@@ -13,8 +13,6 @@
   "author": "Apache Cordova Team",
   "license": "Apache-2.0",
   "devDependencies": {
-    "cordova-android": "^10.1.2",
-    "cordova-ios": "^6.3.0",
     "cordova-plugin-android-permissions": "^1.1.5",
     "cordova-plugin-device": "^2.1.0",
     "cordova-plugin-file": "^8.0.0",
@@ -22,10 +20,7 @@
     "cordova_accurascan_kyc": "^1.0.4"
   },
   "cordova": {
-    "platforms": [
-      "android",
-      "ios"
-    ],
+    "platforms": [],
     "plugins": {
       "cordova-plugin-android-permissions": {},
       "cordova-plugin-device": {},
