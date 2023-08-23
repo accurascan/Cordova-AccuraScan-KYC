@@ -174,10 +174,7 @@ const app = {
             EnableLogs:true
           };
 
-        var imagePath = cordova.file.applicationDirectory + 'www/' + 'img/Facematch.jpg'
-
         var accuraConfigs = {
-          setFlipImage: imagePath,
           enableLogs: 1,
           setCameraFacing: 0,
           isShowLogo: 1,
