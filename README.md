@@ -299,7 +299,7 @@ Place both the license in your project's Runner directory, and add the licenses 
 
 **Error:** String
 
-## 8.Method for get face match percentages between two face.
+## 9.Method for get face match percentages between two face.
 ```
   facematch:()=>{
       var accuraConfs = {
@@ -350,7 +350,7 @@ score: Float
 **Error:** String
 
 
-## 9.Method for liveness check.
+## 10.Method for liveness check.
 
 ```
   liveness:()=>{
@@ -411,7 +411,7 @@ score: Float,
 **Error:** String
 
 
-## 10.Method for Only Facematch.(The following are Optional methods, Use if you need only FaceMatch)
+## 11.Method for Only Facematch.(The following are Optional methods, Use if you need only FaceMatch)
 ### To Open Gallery 1 and 2:-
 
 _For gallery 1_
