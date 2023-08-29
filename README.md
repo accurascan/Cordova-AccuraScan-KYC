@@ -551,9 +551,19 @@ _For Facematch 2_
 **Error:** String
 
 
-Contributing
+## Different implementation used in the demo app:
+ "cordova-plugin-android-permissions": "^1.1.5",
+
+ "cordova-plugin-device": "^2.1.0",
+ 
+ "cordova-plugin-file": "^6.0.0",
+ 
+ "cordova-plugin-filepath": "^1.6.0",
+
+
+## Contributing
 See the contributing guide to learn how to contribute to the repository and the development workflow.
 
-License:
+## License:
 MIT
 
