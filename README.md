@@ -129,31 +129,28 @@ Place both the license in your project's Runner directory, and add the licenses 
   setUpConfig: () => {
       //setConfig
       var config = {
-          setFaceBlurPercentage: 80,
-          setHologramDetection: true,
-          setLowLightTolerance: 10,
-          setMotionThreshold: 25,
-          setMinGlarePercentage: 6,
-          setMaxGlarePercentage: 99,
-          setBlurPercentage: 60,
-          setCameraFacing: 0,
-          EnableLogs:true
+         setFaceBlurPercentage: 80,   // 0 for clean face and 100 for Blurry face
+         setHologramDetection: true,  // true to check hologram on face
+         setLowLightTolerance: 10,    // 0 for full dark document and 100 for full bright document
+         setMotionThreshold: 25,      // 1 - allows 1% motion on document and 100 - it can not detect motion and allow document to scan.
+         setMinGlarePercentage: 6,    // Set min percentage for glare
+         setMaxGlarePercentage: 99,   // Set max percentage for glare
+         setBlurPercentage: 60,       //0 for clean document and 100 for Blurry document
         };
 
       var accuraConfigs = {
-        enableLogs: 1,
-        setCameraFacing: 0,
-        isShowLogo: 1,
-        isFlipImg: 1,
-        CameraScreen_CornerBorder_Enable: true,
+        enableLogs: 0,
+        isShowLogo: 1,     //To hide Logo pass 0
+        isFlipImg: 1,      //To hide flip animation pass 0
+        CameraScreen_CornerBorder_Enable: true, //To enable corner border frame pass true
         CameraScreen_Border_Width: 15,
-        Disable_Card_Name: false,
-        CameraScreen_Frame_Color: '#D5323F',
-        CameraScreen_Text_Color: '#FFFFFF',
-        CameraScreen_Text_Border_Color: '#000000',
-        CameraScreen_Color: '#80000000',
-        CameraScreen_Back_Button: 1,
-        CameraScreen_Change_Button: 1,
+        Disable_Card_Name: false, //To disable taking card name automatically pass true
+        CameraScreen_Frame_Color: '#D5323F',  //Pass a Hex Code to change frame color
+        CameraScreen_Text_Color: '#FFFFFF',    //Pass a Hex Code to change text color
+        CameraScreen_Text_Border_Color: '#000000', //Pass a Hex Code to change text border color
+        CameraScreen_Color: '#80000000',  //Pass a Hex Code to change Camera Screen Background color
+        CameraScreen_Back_Button: 1,   //Pass 0 to hide back button in iOS
+        CameraScreen_Change_Button: 1,   //Pass 0 to hide flip camera button
         ACCURA_ERROR_CODE_MOTION: 'Keep Document Steady',
         ACCURA_ERROR_CODE_DOCUMENT_IN_FRAME: 'Keep document in frame',
         ACCURA_ERROR_CODE_BRING_DOCUMENT_IN_FRAME: 'Bring card near to frame',
