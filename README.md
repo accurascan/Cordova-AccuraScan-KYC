@@ -14,6 +14,7 @@ Below steps to setup Accura Scan's SDK to your project.
 Add the plugin:- `cordova plugin add cordova_accurascan_kyc`
 
 **Usage**
+
 var accura = cordova.plugins.cordova_accurascan_kyc;
 
 ## 1.Setup Android
