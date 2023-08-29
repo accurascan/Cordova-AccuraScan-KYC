@@ -207,21 +207,7 @@ Place both the license in your project's Runner directory, and add the licenses 
 
 #### value: other_mrz or passport_mrz or id_mrz or visa_mrz<br></br>
 
-**Success:** JSON Response {
-
-**front_data:** JSONObjects?,
-
-**back_data:** JSONObjects?,
-
-**type:** Recognition Type,
-
-**face:** URI?
-
-**front_img:** URI?
-
-**back_img:** URI?
-
-}
+**Success:** JSON Response
 
 **Error:** String
 
@@ -240,19 +226,13 @@ Place both the license in your project's Runner directory, and add the licenses 
 
 **CountryId:** integer
 
-**value:** Id of selected country.
-
 **CardId:** integer
-
-**value:** Id of selected card.
 
 **CardName:** String
 
-**value:** Name of selected card.
-
 **CardType:** integer
 
-**value:** Type of selected card.
+</br>
 
 **Success:** JSON Response
 
@@ -273,10 +253,8 @@ Place both the license in your project's Runner directory, and add the licenses 
 
 **BarcodeType:** String
 
-**value:** Type of barcode documents.
 
-**Success:** JSON Response {
-}
+**Success:** JSON Response
 
 **Error:** String
 
@@ -294,8 +272,7 @@ Place both the license in your project's Runner directory, and add the licenses 
   }
   ```
 
-**Success:** JSON Response {
-}
+**Success:** JSON Response 
 
 **Error:** String
 
@@ -342,10 +319,7 @@ Place both the license in your project's Runner directory, and add the licenses 
 **face_uri:** URI
 
 
-**Success:** JSON Response {
-detect: URI?
-score: Float
-}
+**Success:** JSON Response
 
 **Error:** String
 
@@ -398,15 +372,7 @@ score: Float
 **face_uri:** 'uri of face'
 
 
-**Success:** JSON Response {
-
-detect: URI?,
-
-Face_score: Float,
-
-score: Float,
-
-}
+**Success:** JSON Response
 
 **Error:** String
 
@@ -541,12 +507,7 @@ _For Facematch 2_
 
 **Face2:** ’uri of face2’
 
-**Success:** JSON Response {
-
-**Image:** URI?,
-
-**score:** String,
-}
+**Success:** JSON Response
 
 **Error:** String
 
