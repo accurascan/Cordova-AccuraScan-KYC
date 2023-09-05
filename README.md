@@ -93,7 +93,7 @@ Generate your Accura Scan license from https://accurascan.com/developer/dashboar
 ```
 **For iOS**
 ```
-Place both the license in your project's Runner directory, and add the licenses to the target.
+Place key.license and accuraface.license in your project's Runner directory, and add the licenses to the target.
 ```
 
 
@@ -123,7 +123,7 @@ Place both the license in your project's Runner directory, and add the licenses 
 **isMRZEnable:** boolean
 }
 
-### Setting up Configuration's,Error mssages and Scaning title messages
+### Setting up Configuration,Error messages and Scaning title messages
 
 ```
   setUpConfig: () => {
@@ -160,8 +160,6 @@ Place both the license in your project's Runner directory, and add the licenses 
         ACCURA_ERROR_CODE_GLARE_DOCUMENT: 'Glare detect in document',
         ACCURA_ERROR_CODE_HOLOGRAM: 'Hologram Detected',
         ACCURA_ERROR_CODE_DARK_DOCUMENT: 'Low lighting detected',
-        ACCURA_ERROR_CODE_PHOTO_COPY_DOCUMENT:
-          'Can not accept Photo Copy Document',
         ACCURA_ERROR_CODE_FACE: 'Face not detected',
         ACCURA_ERROR_CODE_MRZ: 'MRZ not detected',
         ACCURA_ERROR_CODE_PASSPORT_MRZ: 'Passport MRZ not detected',
@@ -196,16 +194,14 @@ Place both the license in your project's Runner directory, and add the licenses 
   startMRZ:()=>{
     //MRZ
     accura.startMRZ(mrzType,function success(result){
-      navigateToPage(result);
+      console.log(result);
     },function(error){
-    alert(error);
+    console.log(error);
     });
   }
 ```
 
-**MRZType:** String
-
-#### value: other_mrz or passport_mrz or id_mrz or visa_mrz<br></br>
+**MRZType:** other_mrz or passport_mrz or id_mrz or visa_mrz<br></br>
 
 **Success:** JSON Response
 
@@ -220,17 +216,17 @@ Place both the license in your project's Runner directory, and add the licenses 
         console.log(result)
         },function error(error){
         console.log(error)
-        },)
+        })
     }
 ```
 
-**CountryId:** integer
+**CountryId:** Integer
 
-**CardId:** integer
+**CardId:** Integer
 
 **CardName:** String
 
-**CardType:** integer
+**CardType:** Integer
 
 </br>
 
@@ -276,11 +272,11 @@ Place both the license in your project's Runner directory, and add the licenses 
 
 **Error:** String
 
-## 9.Method for get face match percentages between two face.
+## 9.Method to get Face Match Percentage between two faces
 ```
   facematch:()=>{
       var accuraConfs = {
-          face_uri: FaceURI,
+          face_uri: FaceURI, 
         };
         var fconfig = {
           backGroundColor: '#FFC4C4C5',
@@ -310,13 +306,13 @@ Place both the license in your project's Runner directory, and add the licenses 
       function success(result){
       },function error(error){
       console.log(error)
-      }),
+      })
   }
 ```
 
 **accuraConfs:** JSON Object
 
-**face_uri:** URI
+**face_uri:** 'uri of face'
 
 
 **Success:** JSON Response
@@ -329,7 +325,7 @@ Place both the license in your project's Runner directory, and add the licenses 
 ```
   liveness:()=>{
       var accuraConfs = {
-          face_uri: dictionary.face,
+          face_uri: FaceURI,
         };
     
         var lconfig = {
@@ -377,141 +373,6 @@ Place both the license in your project's Runner directory, and add the licenses 
 **Error:** String
 
 
-## 11.Method for Only Facematch.(The following are Optional methods, Use if you need only FaceMatch)
-### To Open Gallery 1 and 2:-
-
-_For gallery 1_
-
-```
-    startGallery1:()=>{
-        var accuraConfs = {
-            face1: faceUrl,
-            face2: matchUrl,
-          };
-
-        accura.gallery1(accuraConfs,
-          function success(result){
-            console.log(result)
-          },function error(error){
-            console.log(error)
-          }
-        )
-    },
-```
-
-_For gallery 2_
-```
-   startGallery2:()=>{
-        var accuraConfs = {
-            face1: faceUrl,
-            face2: matchUrl,
-          };
- 
-        accura.gallery2(accuraConfs,
-          function success(result){
-            console.log(result)
-          },function error(error){
-            console.log(error)
-          }
-        )
-    }
-```
-
-### To Open Camera for Facematch 1 and 2:
-
-_For Facematch 1:_
-```
-    startFaceMatch1:()=>{
-        var accuraConfs = {
-            face1: faceUrl,
-            face2: matchUrl,
-          };
-        var fconfig = {
-            backGroundColor: '#FFC4C4C5',
-            closeIconColor: '#FF000000',
-            feedbackBackGroundColor: '#FFC4C4C5',
-            feedbackTextColor: '#FF000000',
-            setFeedbackTextSize: 18,
-            setFeedBackframeMessage: 'Frame Your Face',
-            setFeedBackAwayMessage: 'Move Phone Away',
-            setFeedBackOpenEyesMessage: 'Keep Your Eyes Open',
-            setFeedBackCloserMessage: 'Move Phone Closer',
-            setFeedBackCenterMessage: 'Move Phone Center',
-            setFeedbackMultipleFaceMessage: 'Multiple Face Detected',
-            setFeedBackFaceSteadymessage: 'Keep Your Head Straight',
-            setFeedBackLowLightMessage: 'Low light detected',
-            setFeedBackBlurFaceMessage: 'Blur Detected Over Face',
-            setFeedBackGlareFaceMessage: 'Glare Detected',
-            setBlurPercentage: 80,
-            setGlarePercentage_0: -1,
-            setGlarePercentage_1: -1,
-            feedbackDialogMessage: 'Loading...',
-            feedBackProcessingMessage: 'Processing...',
-            isShowLogo: 1,
-        };
-          
-        accura.facematch1(accuraConfs,fconfig,
-          function success(result){
-              console.log(result)
-          },function error(error){
-              console.log(error)
-          }
-        )
-    }
-```
-
-_For Facematch 2_
-
-```
-    startFaceMatch2:()=>{
-        var accuraConfs = {
-            face1: faceUrl,
-            face2: matchUrl,
-          };
-        var fconfig = {
-          backGroundColor: '#FFC4C4C5',
-          closeIconColor: '#FF000000',
-          feedbackBackGroundColor: '#FFC4C4C5',
-          feedbackTextColor: '#FF000000',
-          setFeedbackTextSize: 18,
-          setFeedBackframeMessage: 'Frame Your Face',
-          setFeedBackAwayMessage: 'Move Phone Away',
-          setFeedBackOpenEyesMessage: 'Keep Your Eyes Open',
-          setFeedBackCloserMessage: 'Move Phone Closer',
-          setFeedBackCenterMessage: 'Move Phone Center',
-          setFeedbackMultipleFaceMessage: 'Multiple Face Detected',
-          setFeedBackFaceSteadymessage: 'Keep Your Head Straight',
-          setFeedBackLowLightMessage: 'Low light detected',
-          setFeedBackBlurFaceMessage: 'Blur Detected Over Face',
-          setFeedBackGlareFaceMessage: 'Glare Detected',
-          setBlurPercentage: 80,
-          setGlarePercentage_0: -1,
-          setGlarePercentage_1: -1,
-          feedbackDialogMessage: 'Loading...',
-          feedBackProcessingMessage: 'Processing...',
-          isShowLogo: 1,
-        };
-        accura.facematch2(accuraConfs,fconfig,
-          function success(result){
-            console.log(result)
-          },function error(error){
-              console.log(error)
-          }
-        )
-    }
-```
-
-**accuraConfs:** JSON Object
-
-**Face1:** 'uri of face1'
-
-**Face2:** ’uri of face2’
-
-**Success:** JSON Response
-
-**Error:** String
-
-
 ## Different implementation used in the demo app:
  "cordova-plugin-android-permissions": "^1.1.5",
 
@@ -521,10 +382,4 @@ _For Facematch 2_
  
  "cordova-plugin-filepath": "^1.6.0",
 
-
-## Contributing
-See the contributing guide to learn how to contribute to the repository and the development workflow.
-
-## License:
-MIT
 
