@@ -8,27 +8,78 @@ const app = {
       accura = cordova.plugins.cordova_accurascan_kyc;
         const progressElement = document.querySelector('.progress');
         // progressElement.style.animation = 'none';
-        app.CountryList();
+        app.getMetaDat2();
         document.querySelector('.ready').addEventListener('click', app.back);
     },
-    CountryList:() => {
+
+    downloadFile: (url) => {
+      return new Promise((resolve, reject) => {
+        // Get the file name from the URL
+        const fileName = url.split('/').pop();
+    
+        // Get the directory to store the file (Cordova file system)
+        window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function (dir) {
+          const destinationPath = dir.nativeURL + fileName;
+    
+          // Use cordova-plugin-advanced-http for file downloading
+          cordova.plugin.http.downloadFile(url, {}, {}, destinationPath, function (response) {
+            // Remove the 'file://' prefix from the path
+            const filePath = response.nativeURL.replace('file://', '');
+            // alert('File downloaded to: ' + filePath);
+            resolve(filePath); // Return the downloaded file path without 'file://'
+          }, function (error) {
+            // alert('Failed to download file: ' + error.error);
+            reject(error); // Reject with error
+          });
+        }, function (error) {
+          // alert('Error accessing file system: ' + error);
+          reject(error);
+        });
+      });
+    },
+    
+    
+
+    getMetaDat2:() => {
+    const iosUrl = 'URL';
+    const androidUrl = 'URL';
+
+    const faceiosUrl = 'URL';
+    const faceandroidUrl = 'URL';
+
+    // Determine the platform (Cordova has cordova.platformId for platform detection)
+    const url = cordova.platformId === 'ios' ? iosUrl : androidUrl;
+    const faceurl = cordova.platformId === 'ios' ? faceiosUrl : faceandroidUrl;
+
+    console.log("License downloading...");
+
+    app.downloadFile(url)
+        .then(filePath => {
+            return app.downloadFile(faceurl).then(facefilePath => {
+                const config = {
+                    licensePath: filePath,
+                    faceLicensePath: facefilePath
+                };
+                accura.getDynamicMetadata(config,
+                  function (result) {
+                    // app.setUpConfig();
+                    alert(JSON.stringify(result));
+                    app.CountryList(result);
+                   }, function (error) {
+                    alert("error");
+                });
+
+            });
+        })
+        .catch(error => console.error('Error downloading file: ' + error));
+    },
+
+    CountryList:(result) => {
           var listContainer = document.getElementById("list");
 
-         accura.getMetadata(function (result) {
+         
           app.setUpConfig();
-          if(result.isValid){
-            cordova.plugins.permissions.requestPermission(cordova.plugins.permissions.WRITE_EXTERNAL_STORAGE, successCallback, errorCallback);
-            function successCallback(status) {
-              if (status.hasPermission) {
-                  // You have the permission, perform your write operations here
-              } else {
-                  // Permission denied, handle accordingly
-              }
-          }
-          
-          function errorCallback() {
-              // Handle error if permission request fails
-          }
+
             var progress = document.getElementById("progress-container");
             progress.style.visibility = "hidden"
             progress.style.height = "0px"
@@ -133,10 +184,10 @@ const app = {
                       return s.toLowerCase().replace( /\b./g, function(a){ return a.toUpperCase(); } );
                   };
               }
-          }
+          
          }, function (error) {
           alert(error);
-      });
+    
 
     },
     back:()=>{
@@ -174,7 +225,10 @@ const app = {
             EnableLogs:true
           };
 
+        var imagePath = cordova.file.applicationDirectory + 'www/' + 'img/Facematch.jpg'
+
         var accuraConfigs = {
+          setFlipImage: imagePath,
           enableLogs: 1,
           setCameraFacing: 0,
           isShowLogo: 1,

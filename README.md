@@ -100,15 +100,19 @@ Place key.license and accuraface.license in your project's Runner directory, and
 
 ## 4.Get license configuration from SDK. It returns all active functionalities of your license.
 
-### Setting up License
+### Setting up Dynamic License
 ```
-  accura.getMetadata(function (result) {
-    if(result.isValid){
-      console.log(result)
-    }
-  }, function (error) {
-    alert(error);
-  })
+    const config = {
+      licensePath: filePath,
+      faceLicensePath: facefilePath
+    };
+    accura.getDynamicMetadata(config, function (result) {
+      if(result.isValid){
+        console.log(result)
+      }
+    }, function (error) {
+        alert(error);
+    })
 ```
 
 **Error:** String
