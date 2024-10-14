@@ -171,7 +171,12 @@ const app = {
             setMaxGlarePercentage: 99,
             setBlurPercentage: 60,
             setCameraFacing: 0,
-            EnableLogs:true
+            
+            isDocumentLivenessEnable:true,
+            API_Timer:20,
+            isShowProgressDialogue:true,
+            documentLivenessURL:"Your URL",
+            progressDialogue:"API"
           };
 
         var accuraConfigs = {

@@ -136,6 +136,13 @@ Place key.license and accuraface.license in your project's Runner directory, and
          setMinGlarePercentage: 6,    // Set min percentage for glare
          setMaxGlarePercentage: 99,   // Set max percentage for glare
          setBlurPercentage: 60,       //0 for clean document and 100 for Blurry document
+
+        isDocumentLivenessEnable:true, //set false to disable Document Liveness
+        API_Timer:20, // Set the API calling timer
+        isShowProgressDialogue:true, //false to disable Progress Dialogue
+        documentLivenessURL:"Your URL", //Add you Document Liveness URL
+        progressDialogue:"API Calling..." //Add Loading Text
+
         };
 
       var accuraConfigs = {
