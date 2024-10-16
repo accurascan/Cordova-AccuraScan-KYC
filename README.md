@@ -11,7 +11,7 @@ Accura Scan Authentication is used for your customer verification and authentica
 Below steps to setup Accura Scan's SDK to your project.
 
 ## Note:-
-Add the plugin:- `cordova plugin add cordova_accurascan_kyc`
+Add the plugin:- `cordova plugin add git@git.accurascan.com:mahdi/cordova-nfc.git`
 
 ## Usage:-
 var accura = cordova.plugins.cordova_accurascan_kyc;
@@ -70,6 +70,14 @@ android{
 <string>App usage photos for get document picture.</string>
 <key>NSPhotoLibraryAddUsageDescription</key>
 <string>App usage photos for save document picture.</string>
+<key>NFCReaderUsageDescription</key>
+<string>App requires NFC access</string>
+<key>com.apple.developer.nfc.readersession.iso7816.select-identifiers</key>
+<array>
+    <string>A0000002471001</string>
+    <string>A0000002472001</string>
+    <string>00000000000000</string>
+</array>
 ```
 
 ## 3.Setup Accura Scan licenses into your projects
@@ -207,6 +215,16 @@ Place key.license and accuraface.license in your project's Runner directory, and
 
 **Error:** String
 
+## Method to Start Passport NFC.
+```
+// Add your Passport No. , Date of Birth(ddmmyy), Date of expiry(ddmmyy) in the below format and order(String).
+     accura.startNFC(passportNumber,dob,doe,
+         function success(result){
+             console.log(result)
+        },function(error){
+         alert(error);
+        })
+```
 
 ## 6.Method for scan OCR documents.
 ```
