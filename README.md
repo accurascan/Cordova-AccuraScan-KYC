@@ -61,6 +61,8 @@ android{
 
 2.Run `pod install`
 
+Note: Add the NFC Entitlement in your target
+
 **Add this permissions into iOS Info.plist file.**
 
 ```
@@ -217,6 +219,7 @@ Place key.license and accuraface.license in your project's Runner directory, and
 
 ## Method to Start Passport NFC.
 ```
+startNFC:()=>{
 // Add your Passport No. , Date of Birth(ddmmyy), Date of expiry(ddmmyy) in the below format and order(String).
      accura.startNFC(passportNumber,dob,doe,
          function success(result){
@@ -224,6 +227,7 @@ Place key.license and accuraface.license in your project's Runner directory, and
         },function(error){
          alert(error);
         })
+}
 ```
 
 ## 6.Method for scan OCR documents.
