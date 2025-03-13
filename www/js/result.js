@@ -8,11 +8,11 @@ const app = {
     },
 
     ready:()=>{
-        accura = cordova.plugins.cordova_accurascan_kyc;
+        accura = cordova.plugins.cordova_accurascan_micr;
 
         document.querySelector('.ready').addEventListener('click', app.back);
-        document.querySelector('#faceMatch').addEventListener('click', app.facematch);
-        document.querySelector('#liveness').addEventListener('click', app.liveness);
+        // document.querySelector('#faceMatch').addEventListener('click', app.facematch);
+        // document.querySelector('#liveness').addEventListener('click', app.liveness);
 
         var urlParams = new URLSearchParams(window.location.search);
 
@@ -48,14 +48,6 @@ const app = {
             if(keys.length > 0){
               app.mrzTable();
             }
-        }
-
-        if(dict.face != null){
-            var faceButton = document.getElementById("faceMatch"); 
-            var liveButton = document.getElementById("liveness");
-            faceButton.style.visibility = "visible"
-            liveButton.style.visibility = "visible"
-           app.displayImage(dict.face,"faceImage",true)
         }
 
         if(dict.front_img != null){
@@ -232,140 +224,11 @@ const app = {
         container.appendChild(table);
     },
 
-    mrzTable:()=>{
-        // Retrieve the keys and values from the dictionary
-        const keys = Object.keys(dictionary.mrz_data);
-        const values = Object.values(dictionary.mrz_data);
-
-        // Create the HTML structure for the table
-        const table = document.createElement("table");
-        const caption = document.createElement("caption");
-        caption.textContent = "MRZ"; // Set the heading text
-        table.appendChild(caption);
-        const tbody = document.createElement("tbody");
-        table.appendChild(tbody);
-        
-        // Generate the table rows dynamically using the keys and values
-        for (let i = 0; i < keys.length; i++) {
-        const key = keys[i];
-        const value = values[i];
-        
-        const row = document.createElement("tr");
-        const keyCell = document.createElement("td");
-        const valueCell = document.createElement("td");
-        
-        keyCell.textContent = key;
-        valueCell.textContent = value;
-        
-        row.appendChild(keyCell);
-        row.appendChild(valueCell);
-        tbody.appendChild(row);
-        }
-        
-        // Append the table to a container element in the HTML
-        const container = document.getElementById("mrztable");
-        container.appendChild(table);
-
-
-    },
 
     back:()=>{
         history.back();
     },
 
-    facematch:()=>{
-        var accuraConfs = {
-            face_uri: dictionary.face,
-          };
-          var fconfig = {
-            backGroundColor: '#FFC4C4C5',
-            closeIconColor: '#FF000000',
-            feedbackBackGroundColor: '#FFC4C4C5',
-            feedbackTextColor: '#FF000000',
-            setFeedbackTextSize: 18,
-            setFeedBackframeMessage: 'Frame Your Face',
-            setFeedBackAwayMessage: 'Move Phone Away',
-            setFeedBackOpenEyesMessage: 'Keep Your Eyes Open',
-            setFeedBackCloserMessage: 'Move Phone Closer',
-            setFeedBackCenterMessage: 'Move Phone Center',
-            setFeedbackMultipleFaceMessage: 'Multiple Face Detected',
-            setFeedBackFaceSteadymessage: 'Keep Your Head Straight',
-            setFeedBackLowLightMessage: 'Low light detected',
-            setFeedBackBlurFaceMessage: 'Blur Detected Over Face',
-            setFeedBackGlareFaceMessage: 'Glare Detected',
-            setBlurPercentage: 80,
-            setGlarePercentage_0: -1,
-            setGlarePercentage_1: -1,
-            feedbackDialogMessage: 'Loading...',
-            feedBackProcessingMessage: 'Processing...',
-            isShowLogo: 1,
-          };
-
-      accura.startFaceMatch(accuraConfs,fconfig,
-        function success(result){
-            if(result.score != null){
-                var faceScore = document.getElementById("faceScore");
-                var liveScore = document.getElementById("liveScore");
-                faceScore.style.visibility = "visible"
-                faceScore.textContent = Number(result.score).toFixed(2) + "%";
-                liveScore.style.visibility = "visible"
-                liveScore.textContent = "0.00%";
-
-            }
-            if(result.detect != null){
-                app.displayImage(result.detect,"matchImage",true);
-            }
-       })
-    },
-
-    liveness:()=>{
-        var accuraConfs = {
-            face_uri: dictionary.face,
-          };
-      
-          var lconfig = {
-            backGroundColor: '#FFC4C4C5',
-            closeIconColor: '#FF000000',
-            feedbackBackGroundColor: '#FFC4C4C5',
-            feedbackTextColor: '#FF000000',
-            setFeedbackTextSize: 18,
-            setFeedBackframeMessage: 'Frame Your Face',
-            setFeedBackAwayMessage: 'Move Phone Away',
-            setFeedBackOpenEyesMessage: 'Keep Your Eyes Open',
-            setFeedBackCloserMessage: 'Move Phone Closer',
-            setFeedBackCenterMessage: 'Move Phone Center',
-            setFeedbackMultipleFaceMessage: 'Multiple Face Detected',
-            setFeedBackFaceSteadymessage: 'Keep Your Head Straight',
-            setFeedBackBlurFaceMessage: 'Blur Detected Over Face',
-            setFeedBackGlareFaceMessage: 'Glare Detected',
-            setBlurPercentage: 80,
-            setGlarePercentage_0: -1,
-            setGlarePercentage_1: -1,
-            setLivenessURL: 'https://accurascan.com:8443/check_liveness',
-            setFeedBackLowLightMessage: 'Low light detected',
-            feedbackLowLightTolerence: 39,
-            feedbackDialogMessage: 'Loading...',
-            feedBackProcessingMessage: 'Processing...',
-            isShowLogo: 1,
-          };
-        
-        accura.startLiveness(accuraConfs,lconfig,
-        function success(result){
-            if(result.face_score != null){
-                var faceScore = document.getElementById("faceScore");
-                faceScore.style.visibility = "visible"
-                faceScore.textContent = Number(result.face_score).toFixed(2) + "%";
-            }
-            if(result.score != null){
-                var liveScore = document.getElementById("liveScore");
-                liveScore.textContent = Number(result.score).toFixed(2) + "%";
-                liveScore.style.visibility = "visible"
-            }
-            if(result.detect != null){
-                app.displayImage(result.detect,"matchImage",true);
-            }            
-        })
-    },
 
     displayImage:(path,imageId,isFace)=>{
         var imagePath = path;
