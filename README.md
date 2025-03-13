@@ -352,6 +352,8 @@ Place key.license and accuraface.license in your project's Runner directory, and
           feedbackDialogMessage: 'Loading...',
           feedBackProcessingMessage: 'Processing...',
           isShowLogo: 1,
+          setEnableFaceMovement: true,
+          setEnableOralVerification:true,
         };
       
       accura.startLiveness(accuraConfs,lconfig,

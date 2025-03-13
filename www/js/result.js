@@ -347,6 +347,8 @@ const app = {
             feedbackDialogMessage: 'Loading...',
             feedBackProcessingMessage: 'Processing...',
             isShowLogo: 1,
+            setEnableFaceMovement: true,
+            setEnableOralVerification:true,
           };
         
         accura.startLiveness(accuraConfs,lconfig,
